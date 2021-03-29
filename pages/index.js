@@ -8,7 +8,8 @@ export default function Home() {
       const response = await fetch('https://admin.skazka.ro/articles', {
         method: 'GET',
       });
-      console.log('response', response.json());
+      const data = await response.json();
+      console.log('response', data);
       console.log('response.data', response, response.data);
     };
     fetchArticles();
