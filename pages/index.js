@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 
 export default function Home(props) {
-  console.log(props);
+  console.log('propsss', props);
   useEffect(() => {
     const fetchArticles = async () => {
       const response = await fetch('https://admin.skazka.ro/articles', {
