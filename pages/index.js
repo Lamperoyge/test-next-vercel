@@ -6,7 +6,7 @@ export default function Home() {
   useEffect(() => {
     const fetchArticles = async () => {
       const response = await fetch('https://admin.skazka.ro/articles');
-      console.log('response', response);
+      console.log('response', response.json());
       console.log('response.data', response.data);
     };
     fetchArticles();
