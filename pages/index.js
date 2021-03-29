@@ -2,7 +2,8 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+export default function Home(props) {
+  console.log(props);
   useEffect(() => {
     const fetchArticles = async () => {
       const response = await fetch('https://admin.skazka.ro/articles', {
@@ -74,4 +75,22 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  // Run API calls in parallel
+  try {
+    const response = await fetch('https://admin.skazka.ro/articles', {
+      method: 'GET',
+    });
+    const data = await response.json();
+    return {
+      props: { articles: data },
+      revalidate: 1,
+    };
+  } catch (error) {
+    return {
+      props: { articles: [] },
+    };
+  }
 }
