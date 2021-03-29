@@ -5,9 +5,11 @@ import styles from '../styles/Home.module.css';
 export default function Home() {
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetch('https://admin.skazka.ro/articles');
+      const response = await fetch('https://admin.skazka.ro/articles', {
+        method: 'GET',
+      });
       console.log('response', response.json());
-      console.log('response.data', response.data);
+      console.log('response.data', response, response.data);
     };
     fetchArticles();
   }, []);
